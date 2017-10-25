@@ -33,6 +33,7 @@
         android:layout_below="@+id/editentername"
         android:layout_alignParentStart="true"
         android:id="@+id/joinbutton_id"
+        android:onClick="OnClickJoin"
 
 
         />
@@ -43,6 +44,7 @@
         android:text="SETTINGS"
         android:layout_below="@+id/joinbutton_id"
         android:layout_alignParentStart="true"
+        android:onClick="OnSettingsClick"
 
         />
 
