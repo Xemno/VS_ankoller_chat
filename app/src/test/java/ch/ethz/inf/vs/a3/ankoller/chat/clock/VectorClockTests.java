@@ -3,8 +3,8 @@ package ch.ethz.inf.vs.a3.ankoller.chat.clock;
 import org.junit.Assert;
 import org.junit.Test;
 
-import ch.ethz.inf.vs.a3.queue.PriorityQueue;
-import ch.ethz.inf.vs.a3.solution.clock.VectorClock;
+import ch.ethz.inf.vs.a3.ankoller.chat.queue.PriorityQueue;
+//import ch.ethz.inf.vs.a3.solution.clock.VectorClock;
 
 public class VectorClockTests {
 	private static final int[] testTimes = { 71, 70, 1 };
