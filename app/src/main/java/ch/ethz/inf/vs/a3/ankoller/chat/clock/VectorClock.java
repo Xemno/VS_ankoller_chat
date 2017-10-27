@@ -52,12 +52,35 @@ class VectorClock  implements Clock{
 
 
     }
-    //TODO
+
     @Override
     public boolean happenedBefore(Clock other) {
+        Map<Integer, Integer> compare = ((VectorClock)other).vector;
+        Set<Integer> keys = compare.keySet();
+        for (Integer k : keys) {
+            //Not true assumption: I assume that vector has to contain every key which compare contains to get a true.
+            //I have to check that no value of vector is bigger than the value of compare.
+            if(vector.containsKey(k)){
+                if(vector.get(k) > compare.get(k)){
+                    return false;
+                }
+            }
+        }
+
+        for (Integer k : keys) {
+            //I have to check that at least one value from vector less than the value of compare.
+            if(vector.containsKey(k)){
+                if(vector.get(k) < compare.get(k)){
+                    return true;
+                }
+            }
+
+        }
+
         return false;
     }
 
+    //TODO
     @Override
     public String toString(){
         return null;
