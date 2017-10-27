@@ -1,5 +1,6 @@
 package ch.ethz.inf.vs.a3.ankoller.chat.clock;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -12,7 +13,7 @@ import java.util.Set;
 
 class VectorClock  implements Clock{
 
-    private Map<Integer, Integer> vector;
+    private Map<Integer, Integer> vector = new HashMap<>();
     //For each process id you associate a logical time.
 
     @Override
