@@ -1,4 +1,4 @@
-package ch.ethz.inf.vs.a3.ankoller.chat;
+package ch.ethz.inf.vs.a3.ankoller.chat.chat;
 
 /**
  * Created by anja on 25.10.2017.

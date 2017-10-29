@@ -1,4 +1,4 @@
-package ch.ethz.inf.vs.a3.ankoller.chat;
+package ch.ethz.inf.vs.a3.ankoller.chat.chat;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import ch.ethz.inf.vs.a3.ankoller.chat.R;
 
 public class MainActivity extends AppCompatActivity {
 

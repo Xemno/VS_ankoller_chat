@@ -1,4 +1,4 @@
-package ch.ethz.inf.vs.a3.ankoller.chat;
+package ch.ethz.inf.vs.a3.ankoller.chat.chat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.EditText;
 
+import ch.ethz.inf.vs.a3.ankoller.chat.R;
 import ch.ethz.inf.vs.a3.ankoller.chat.udpclient.NetworkConsts;
 
 /**
