@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
+import android.widget.Button;
 import android.widget.EditText;
 
 import ch.ethz.inf.vs.a3.ankoller.chat.R;
@@ -14,21 +15,26 @@ import ch.ethz.inf.vs.a3.ankoller.chat.udpclient.NetworkConsts;
  */
 
 public class SettingsActivity extends FragmentActivity {
-    //user should be able to set server adress and port --> modify xml file (activity_settingsttings.xml)
-    //declare here
+
+    public static String KEY_IP = "ch.ethz.inf.vs.a3.ankoller.chat.chat.KEY_IP";
+    public static String KEY_PORT = "ch.ethz.inf.vs.a3.ankoller.chat.chat.KEY_PORT";
+
     EditText editadress;
     EditText editport;
+    Button btnSave;
+
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        editadress = (EditText)findViewById(R.id.edit_adress);
-        editport = (EditText)findViewById(R.id.edit_port);
+        editadress = (EditText)findViewById(R.id.editText_port);
+        editport = (EditText)findViewById(R.id.editText_port);
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        editadress.setText(sharedPreferences.getString("key_stored_string_textview_adress", NetworkConsts.SERVER_ADDRESS));
-        editport.setText(String.valueOf(sharedPreferences.getInt("key_stored_int_textview_port", NetworkConsts.UDP_PORT)));
+
+
+
     }
+
 
 
 
