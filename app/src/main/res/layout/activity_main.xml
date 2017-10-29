@@ -9,42 +9,38 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     tools:context="ch.ethz.inf.vs.a3.ankoller.chat.chat.MainActivity">
-    <TextView
-        android:text="Enter username:"
+
+    <EditText
+        android:id="@+id/edit_text_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter username here"
+        android:inputType="textPersonName"
+        android:text=""
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/enterName" />
-    <EditText
-        android:id="@+id/editentername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/enterName"
-        android:text=""
-        android:ems="10"
-    />
+        android:layout_alignParentEnd="true" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="JOIN"
-        android:layout_below="@+id/editentername"
+        android:layout_below="@+id/edit_text_name"
         android:layout_alignParentStart="true"
-        android:id="@+id/joinbutton_id"
+        android:id="@+id/button_join"
         android:onClick="OnClickJoin"
 
 
         />
+
     <Button
+        android:id="@+id/button_settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/settingbutton_id"
-        android:text="SETTINGS"
-        android:layout_below="@+id/joinbutton_id"
         android:layout_alignParentStart="true"
-        android:onClick="OnSettingsClick"
+        android:layout_below="@+id/button_join"
+        android:onClick="OnClickSettings"
+        android:text="SETTINGS"
 
         />
 

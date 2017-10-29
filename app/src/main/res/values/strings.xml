@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">VS_ankoller_chat</string>
+
+    <string name="packet_data">
+        {
+            \"header\": {
+            \"username\": \"|#|#|USER|#|#|\",
+            \"uuid\": \"|#|#|UUID|#|#|\",
+            \"timestamp\": \"{|#|#|TIME|#|#|}\",
+            \"type\": \"|#|#|TYPE|#|#|\"
+            },
+            \"body\": {|#|#|BODY|#|#|}
+        }
+    </string>
+
 </resources>

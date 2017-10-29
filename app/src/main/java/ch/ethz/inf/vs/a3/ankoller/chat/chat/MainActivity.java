@@ -7,46 +7,53 @@ import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import ch.ethz.inf.vs.a3.ankoller.chat.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static String PACKET_DATA;
+    private EditText et_name;
+    private Button button_join, button_settings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // Initial files
-        //first change
-        //change 2
+
+        PACKET_DATA = getResources().getString(R.string.packet_data);
+        et_name = (EditText) findViewById(R.id.edit_text_name);
+
+        button_join = (Button) findViewById(R.id.button_join);
+        button_join.setEnabled(true);
+
+        button_settings = (Button) findViewById(R.id.button_settings);
+        button_settings.setEnabled(true);
+
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
     public void OnClickJoin(View view){
-        //method for what happens when joinbutton is clicked
-        //also declared in the layout file android:OnClick in the join button
-        //layout android_mainactivity
-        //sends a message to the erceiver
-        //on successful registration, application must transition
-        //to a new activity (Chatactivity)
-        //if registration not successful chat client tries automatically again
-        //to register to the user 5 times, if still not successful,
-        //application must display a notification like "registration not possible"
-       //check if there is internet connection
+
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         if (networkInfo == null || !networkInfo.isConnected()){
-            Toast.makeText(getApplication(), "no internetconnection!", Toast.LENGTH_LONG).show();
-        }else{
+            Toast.makeText(getApplication(), "No internet connection!", Toast.LENGTH_LONG).show();
+        }else{  // connection to the internet is made
             //TODO
             //declare, username, userid,... to at last call a thread wich tries again registration
         }
 
     }
-    public void OnSettingsClick (View view){
-        //method for what happens when settingbutton is clicked, also ins the layout file
-        //int he settings button
-        //transitions to another activity (Settingsactivity)
-        //user should be able to set servers address and port --> see SettingsActivity class
+    public void OnClickSettings (View view){
+        // start activity for settings result
         startActivity(new Intent(this,SettingsActivity.class));
 
     }
