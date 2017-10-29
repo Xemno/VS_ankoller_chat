@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="0.0.0.0"
+        android:ems="10"
+        android:id="@+id/edit_adress" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="4446"
+        android:ems="10"
+        android:id="@+id/edit_port" />
+
+    <TextView
+        android:text="Server address:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/serverAddress"
+        android:textSize="24sp" />
+
+    <TextView
+        android:text="Server port:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/serverPort"
+        android:textSize="24sp" />
+
+
+
+</LinearLayout>
