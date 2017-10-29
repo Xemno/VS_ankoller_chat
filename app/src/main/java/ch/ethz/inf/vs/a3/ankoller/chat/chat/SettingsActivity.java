@@ -13,10 +13,10 @@ import android.widget.EditText;
 import ch.ethz.inf.vs.a3.ankoller.chat.R;
 import ch.ethz.inf.vs.a3.ankoller.chat.udpclient.NetworkConsts;
 
-public class SettingsActivity extends FragmentActivity {
+public class SettingsActivity extends AppCompatActivity {
 
-    private static final String KEY_IP = "ch.ethz.inf.vs.a3.ankoller.chat.chat.IP_KEY";
-    private static final String KEY_PORT = "ch.ethz.inf.vs.a3.ankoller.chat.chat.PORT_KEY";
+    public static final String KEY_IP = "ch.ethz.inf.vs.a3.ankoller.chat.chat.IP_KEY";
+    public static final String KEY_PORT = "ch.ethz.inf.vs.a3.ankoller.chat.chat.PORT_KEY";
 
     EditText editIP, editPort;
     Button saveButton;
@@ -32,24 +32,23 @@ public class SettingsActivity extends FragmentActivity {
         saveButton = (Button) findViewById(R.id.save_button);
 
         // retrieve settings if available
-
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        editIP.setText(sharedPreferences.getString(KEY_IP, NetworkConsts.SERVER_ADDRESS));
-        editPort.setText(sharedPreferences.getInt(KEY_PORT, NetworkConsts.UDP_PORT));
-
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(KEY_IP, editIP.getText().toString());
-                editor.putInt(KEY_PORT, Integer.parseInt(editPort.getText().toString()));
-                editor.apply();
-
-                startActivity(new Intent(SettingsActivity.this, MainActivity.class));
-            }
-        });
+//        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        editIP.setText(sharedPreferences.getString(KEY_IP, NetworkConsts.SERVER_ADDRESS));
+//        editPort.setText(sharedPreferences.getInt(KEY_PORT, NetworkConsts.UDP_PORT));
+//
+//        saveButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(SettingsActivity.this);
+//                SharedPreferences.Editor editor = sharedPreferences.edit();
+//                editor.putString(KEY_IP, editIP.getText().toString());
+//                editor.putInt(KEY_PORT, Integer.parseInt(editPort.getText().toString()));
+//                editor.apply();
+//
+//                startActivity(new Intent(SettingsActivity.this, MainActivity.class));
+//            }
+//        });
 
     }
 }

@@ -2,8 +2,10 @@ package ch.ethz.inf.vs.a3.ankoller.chat.chat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +13,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.UUID;
+
 import ch.ethz.inf.vs.a3.ankoller.chat.R;
+import ch.ethz.inf.vs.a3.ankoller.chat.message.MessageTypes;
+import ch.ethz.inf.vs.a3.ankoller.chat.udpclient.NetworkConsts;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,8 +53,18 @@ public class MainActivity extends AppCompatActivity {
         if (networkInfo == null || !networkInfo.isConnected()){
             Toast.makeText(getApplication(), "No internet connection!", Toast.LENGTH_LONG).show();
         }else{  // connection to the internet is made
-            //TODO
-            //declare, username, userid,... to at last call a thread wich tries again registration
+            button_join.setEnabled(false);
+            button_settings.setEnabled(false);
+
+            String userName = et_name.getText().toString();
+            String uuid = UUID.randomUUID().toString();
+
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            String serverAddress = sharedPreferences.getString(SettingsActivity.KEY_IP, NetworkConsts.SERVER_ADDRESS);
+            int udpPort = sharedPreferences.getInt(SettingsActivity.KEY_PORT, NetworkConsts.UDP_PORT);
+
+            new Thread(new ClientThread(this, userName, uuid, MessageTypes.REGISTER, serverAddress, udpPort)).start();
+
         }
 
     }
