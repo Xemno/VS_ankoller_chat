@@ -80,15 +80,29 @@ class VectorClock  implements Clock{
         return false;
     }
 
-    //TODO
     @Override
     public String toString(){
-        return null;
+        String result = "{";
+        Set<Integer> keys = vector.keySet();
+        int processnr = 0;
+        for (Integer k : keys){
+            result = result + "\"" + processnr + "\"" + ":" + vector.get(k) + ",";
+            processnr = processnr + 1;
+        }
+        //To get rid of the last comma, but only if there is one. (Not in the case of an empty clock.
+        if (result.length() > 1){
+            result = result.substring(0, result.length() - 1);
+        }
+
+        result = result + "}";
+
+        return result;
     }
 
+    //TODO
     @Override
     public void setClockFromString(String clock) {
-
+        vector = new HashMap<>();
     }
 
     public int getTime(Integer pid){
