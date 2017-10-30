@@ -1,11 +1,14 @@
 package ch.ethz.inf.vs.a3.ankoller.chat.chat;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "##MainActivity## -> ";
     public static final String PREFERENCES = "ch.ethz.inf.vs.a3.ankoller.chat.chat.PREFERENCE_FILE_KEY";
+    public static final String BROADCAST = "ch.ethz.inf.vs.a3.ankoller.chat.chat.BROADCAST_KEY";
 
     public static String PACKET_DATA;
     private EditText et_name;
@@ -42,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
         button_settings = (Button) findViewById(R.id.button_settings);
         button_settings.setEnabled(true);
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(new LBReceiver(), new IntentFilter(BROADCAST));
+
 
     }
 
@@ -82,5 +89,17 @@ public class MainActivity extends AppCompatActivity {
         // start activity for settings result
         startActivity(new Intent(this,SettingsActivity.class));
 
+    }
+
+    private class LBReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String stringExtra = intent.getStringExtra(ClientThread.ERROR);
+            Toast.makeText(getApplication(), stringExtra, Toast.LENGTH_LONG).show();
+            if (stringExtra.equals(MessageTypes.REGISTER)) {
+                button_join.setEnabled(true);
+                button_settings.setEnabled(true);
+            }
+        }
     }
 }
