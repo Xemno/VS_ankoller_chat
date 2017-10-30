@@ -8,6 +8,7 @@ import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,9 @@ import ch.ethz.inf.vs.a3.ankoller.chat.message.MessageTypes;
 import ch.ethz.inf.vs.a3.ankoller.chat.udpclient.NetworkConsts;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final String TAG = "MainActivity -> ";
+    public static final String PREFERENCES = "ch.ethz.inf.vs.a3.ankoller.chat.chat.PREFERENCE_FILE_KEY";
 
     public static String PACKET_DATA;
     private EditText et_name;
@@ -50,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+
+        Log.i(TAG, "Network Info: " + networkInfo.toString());
+
         if (networkInfo == null || !networkInfo.isConnected()){
             Toast.makeText(getApplication(), "No internet connection!", Toast.LENGTH_LONG).show();
         }else{  // connection to the internet is made
@@ -59,7 +66,10 @@ public class MainActivity extends AppCompatActivity {
             String userName = et_name.getText().toString();
             String uuid = UUID.randomUUID().toString();
 
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            //SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            Context context = getApplicationContext();
+            SharedPreferences sharedPreferences = context.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+
             String serverAddress = sharedPreferences.getString(SettingsActivity.KEY_IP, NetworkConsts.SERVER_ADDRESS);
             int udpPort = sharedPreferences.getInt(SettingsActivity.KEY_PORT, NetworkConsts.UDP_PORT);
 

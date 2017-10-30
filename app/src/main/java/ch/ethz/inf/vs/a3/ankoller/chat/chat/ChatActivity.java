@@ -1,14 +1,15 @@
 package ch.ethz.inf.vs.a3.ankoller.chat.chat;
 
-/**
- * Created by anja on 25.10.2017.
- */
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
-public class ChatActivity {
-    private static String user = "";
-    private static String uuid = "";
-    public static int UDP_PORT = 4446;
+import ch.ethz.inf.vs.a3.ankoller.chat.R;
 
-    public static String SERVER_ADDRESS = "10.0.2.2";
-    //public static int SOCKET_TIMEOUT = 10000;
+public class ChatActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_chat);
+    }
 }
