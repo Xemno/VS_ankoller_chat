@@ -17,7 +17,7 @@ import ch.ethz.inf.vs.a3.ankoller.chat.udpclient.NetworkConsts;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    public static final String TAG = "SettingsActivity -> ";
+    public static final String TAG = "##SettingsActivity## -> ";
     public static final String KEY_IP = "ch.ethz.inf.vs.a3.ankoller.chat.chat.IP_KEY";
     public static final String KEY_PORT = "ch.ethz.inf.vs.a3.ankoller.chat.chat.PORT_KEY";
 

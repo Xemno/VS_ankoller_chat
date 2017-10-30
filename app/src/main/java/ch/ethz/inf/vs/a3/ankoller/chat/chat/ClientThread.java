@@ -13,7 +13,7 @@ import ch.ethz.inf.vs.a3.ankoller.chat.message.MessageTypes;
 
 public class ClientThread implements Runnable {
 
-    public static final String TAG = "Client Thread -> ";
+    public static final String TAG = "##Client Thread## -> ";
     public static final String UUID_KEY = "ch.ethz.inf.vs.a3.ankoller.chat.message.MessageTypes.UUID";
     public static final String USER_KEY = "ch.ethz.inf.vs.a3.ankoller.chat.message.MessageTypes.USER";
 
@@ -36,8 +36,8 @@ public class ClientThread implements Runnable {
     @Override
     public void run() {
         try {
-            // register or deregister
-//            deRegister(TYPE);
+            // register or unregister depending on TYPE
+            register(TYPE);
             Log.i(TAG, TYPE + "ed successfully");
 
             // transition to new activity
@@ -45,9 +45,24 @@ public class ClientThread implements Runnable {
             else context.startActivity(new Intent(context, MainActivity.class));
         }
         catch (Exception e){
-            Log.e(TAG, e.toString());
+            Log.i(TAG, e.toString());
 //            LocalBroadcastManager.getInstance(context).sendBroadcast(new Intent("CT_Broadcast").putExtra("ERROR", e.toString()));
             return;
         }
+    }
+
+    private void register(String type) throws Exception {
+        // try to register or deregister 5 times
+        boolean registered = false;
+        for (int i = 0; i < 5 && !registered; i++) {
+            registered = doRegDereg(TYPE); // Do a registration or De-registration
+        }
+        if (!registered) throw new Exception(type + " FAILED");
+    }
+
+    private boolean doRegDereg(String type) {
+    // Do a registration or De-registration
+
+        return false;
     }
 }

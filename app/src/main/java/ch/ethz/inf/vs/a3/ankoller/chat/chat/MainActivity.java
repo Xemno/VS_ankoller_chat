@@ -22,7 +22,7 @@ import ch.ethz.inf.vs.a3.ankoller.chat.udpclient.NetworkConsts;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String TAG = "MainActivity -> ";
+    public static final String TAG = "##MainActivity## -> ";
     public static final String PREFERENCES = "ch.ethz.inf.vs.a3.ankoller.chat.chat.PREFERENCE_FILE_KEY";
 
     public static String PACKET_DATA;
