@@ -11,7 +11,7 @@ import java.util.Set;
 //Added all methods and the Map which we have to use according to the exercise sheet and according to Clock.java.
 //To understand HashMap: https://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html
 
-class VectorClock  implements Clock{
+ public class VectorClock  implements Clock{
 
     private Map<Integer, Integer> vector = new HashMap<>();
     //For each process id you associate a logical time.
