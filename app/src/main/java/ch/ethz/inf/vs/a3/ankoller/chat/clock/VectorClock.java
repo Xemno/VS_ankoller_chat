@@ -8,7 +8,7 @@ import java.util.Set;
  * Created by anja on 25.10.2017.
  */
 
-//Added all methods and the Map which we have to use according to the exercise sheet and according to Clock.java.
+//Added and implemented all methods and the Map which we have to use according to the exercise sheet and according to Clock.java.
 //To understand HashMap: https://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html
 
  public class VectorClock  implements Clock{
@@ -33,10 +33,10 @@ import java.util.Set;
            }
         }
     }
-    //TODO
+
     @Override
     public void setClock(Clock other) {
-
+        vector = ((VectorClock)other).vector;
     }
 
     @Override
@@ -99,11 +99,67 @@ import java.util.Set;
         return result;
     }
 
-    //TODO
     @Override
     public void setClockFromString(String clock) {
-        vector = new HashMap<>();
-    }
+        Map<Integer, Integer> vectortest = new HashMap<>();
+        vectortest = new HashMap<>();
+        int key;
+        int value;
+        int help;
+
+            //As long as there are key value pairs in clock.
+            while (clock.length() > 6){
+                //Get rid of the first { or the comma and of the ".
+                clock = clock.substring(2, clock.length());
+                try{
+                    key = Integer.parseInt(clock.substring(0, 1));
+                } catch (NumberFormatException nfe){
+                    System.out.println("Could not parse " + nfe + ".");
+                    break;
+                }
+                //Do this while-loop as long as the next element of the string is part of the key.
+                while(true){
+                    //Get rid of the one number of the key.
+                    clock = clock.substring(1, clock.length());
+                    try{
+                        help = Integer.parseInt(clock.substring(0, 1));
+                    } catch (NumberFormatException nfe){
+                        System.out.println("Could not parse " + nfe + ".");
+                        break;
+                    }
+                    key = key * 10 + help;
+                    clock = clock.substring(1, clock.length());
+                }
+
+                //Get rid of the " and the :.
+                clock = clock.substring(2, clock.length());
+                try{
+                    value = Integer.parseInt(clock.substring(0, 1));
+                } catch (NumberFormatException nfe){
+                    System.out.println("Could not parse " + nfe + ".");
+                    break;
+                }
+                //Do this while-loop as long as the next element of the string is part of the value.
+                while(true){
+                    //Get rid of the one number of the value.
+                    clock = clock.substring(1, clock.length());
+                    try{
+                        help = Integer.parseInt(clock.substring(0, 1));
+                    } catch (NumberFormatException nfe){
+                        System.out.println("Could not parse " + nfe + ".");
+                        break;
+                    }
+                    value = value * 10 + help;
+                    clock = clock.substring(1, clock.length());
+                }
+                vectortest.put(key, value);
+            }
+            //clock.length() equals 2 in case of an empty string and 1 if the string wasn't empty but a correct one.
+            if (clock.length() <= 2){
+                vector = vectortest;
+            }
+
+        }
 
     public int getTime(Integer pid){
         return vector.get(pid);
