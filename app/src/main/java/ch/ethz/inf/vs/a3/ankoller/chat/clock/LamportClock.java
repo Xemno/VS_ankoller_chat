@@ -1,5 +1,10 @@
 package ch.ethz.inf.vs.a3.ankoller.chat.clock;
 
+
+/**
+ * Created by Lara Kohler on 26.10.2017.
+ */
+
 //Added and implemented all methods and the Map which we have to use according to the exercise sheet and according to Clock.java.
 
 public class LamportClock implements Clock{
@@ -8,13 +13,16 @@ public class LamportClock implements Clock{
 
     @Override
     public void update(Clock other) {
-        int othertime = ((LamportClock) other).getTime();
+        //This doesn't work: int othertime = other.getTime();
+        //I need to use (LamportClock(other)) to show that other is of the class LamportClock and not only from the class Clock.
+        int othertime = ((LamportClock)other).getTime();
         time = Math.max(time,othertime);
+        //First max, then tick.
     }
 
     @Override
     public void setClock(Clock other) {
-        time = ((LamportClock) other).getTime();
+        time = ((LamportClock)other).getTime();
     }
 
     @Override
@@ -25,7 +33,7 @@ public class LamportClock implements Clock{
 
     @Override
     public boolean happenedBefore(Clock other) {
-        return (time < ((LamportClock) other).getTime());
+        return (time < ((LamportClock)other).getTime());
     }
 
     @Override
@@ -36,12 +44,12 @@ public class LamportClock implements Clock{
 
     @Override
     public void setClockFromString(String clock) {
-        // Must check if decimal values and string not empty
-        // I think regular expression "\\d+" would be sufficient
-        if (!clock.matches(".*\\d+.*") && !clock.isEmpty()) {
-            time = Integer.parseInt(clock);
+        //string to int
+        try {
+            time = Integer.parseInt(clock.toString());
+        } catch(NumberFormatException nfe) {
+            System.out.println("Could not parse " + nfe + ".");
         }
-
     }
 
     public void setTime(int time){
@@ -50,7 +58,7 @@ public class LamportClock implements Clock{
     }
 
     public int getTime(){
-        return this.time;
+        return time;
     }
 
 }
