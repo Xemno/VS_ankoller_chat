@@ -71,9 +71,7 @@ public class VectorClock  implements Clock{
                     return true;
                 }
             }
-
         }
-
         return false;
     }
 

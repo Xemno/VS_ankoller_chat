@@ -6,21 +6,13 @@ public class VectorClockComparator implements Comparator<VectorClock> {
 
     @Override
     public int compare(VectorClock lhs, VectorClock rhs) {
-        // Write your code here
-        //This class is used in exercise 3.
-        //we already have message comparatore
-        VectorClock sendclock = new VectorClock();
-        VectorClock receiveclock = new VectorClock();
-       // sendclock.setClockFromString(lhs, timestamp);
-        //receiveclock.setClockFromString(rhs.timestamp);
-
-        if (sendclock.happenedBefore(receiveclock)) {
+        if (lhs.happenedBefore(rhs)) {
             return -1;
-        } else if (receiveclock.happenedBefore(sendclock)) {
+        } else if (rhs.happenedBefore(lhs)) {
             return 1;
         } else {
             return 0;
         }
     }
-    //TODO: not finished, above might be not sufficient
+
 }
