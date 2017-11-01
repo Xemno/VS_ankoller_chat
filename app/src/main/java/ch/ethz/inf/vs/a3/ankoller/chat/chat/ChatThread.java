@@ -82,13 +82,13 @@ public class ChatThread implements Runnable {
             }
 
         } catch (SocketException se) { Log.i(TAG, se.toString());}
-          catch (UnknownHostException uhe) {Log.i(TAG, uhe.toString());}
+          //catch (UnknownHostException uhe) {Log.i(TAG, uhe.toString());}
           catch (SocketTimeoutException ste) {Log.i(TAG, ste.toString()); return vectorMessages;}
           catch (IOException ioe) {Log.i(TAG, ioe.toString());}
           catch (JSONException je) {Log.i(TAG, je.toString());}
           finally {
             if (socket != null) socket.close();
         }
-
+        return vectorMessages;
     }
 }
