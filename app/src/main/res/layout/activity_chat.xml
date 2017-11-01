@@ -6,4 +6,17 @@
     android:layout_height="match_parent"
     tools:context="ch.ethz.inf.vs.a3.ankoller.chat.chat.ChatActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/tv_chatactivity"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Retrieve chat log"
+        android:id="@+id/RetChatButton"
+        android:onClick="onRetChatButtonClick"
+        />
 </android.support.constraint.ConstraintLayout>
