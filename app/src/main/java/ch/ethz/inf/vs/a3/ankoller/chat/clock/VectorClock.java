@@ -4,33 +4,26 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Created by anja on 25.10.2017.
- */
-
 //Added all methods and the Map which we have to use according to the exercise sheet and according to Clock.java.
 //To understand HashMap: https://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html
 
-class VectorClock  implements Clock{
+class VectorClock implements Clock{
 
     private Map<Integer, Integer> vector = new HashMap<>();
-    //For each process id you associate a logical time.
+    //For each process id a logical time is associated
 
     @Override
     public void update(Clock other) {
-        //I need to put .vector to get the Map<Integer, Integer>.
-        Map<Integer, Integer> compare = ((VectorClock)other).vector;
-        //How to iterate over a set: https://stackoverflow.com/questions/12455737/how-to-iterate-over-a-set-hashset-without-an-iterator
-       Set<Integer> keys = compare.keySet();
+
+        Map<Integer, Integer> otherVector = ((VectorClock) other).vector;
+        Set<Integer> keys = otherVector.keySet(); // the keys are the process ids (pid)
+
         for (Integer k : keys) {
-           if(vector.containsKey(k)){
-                if(vector.get(k) < compare.get(k)){
-                    vector.put(k, compare.get(k));
-                }
-           }
-           else{
-               vector.put(k, compare.get(k));
-           }
+            if (vector.containsKey(k)) {
+                if (vector.get(k) < otherVector.get(k)) vector.put(k, otherVector.get(k));
+            } else {
+                vector.put(k, otherVector.get(k));
+            }
         }
     }
     //TODO
@@ -83,7 +76,7 @@ class VectorClock  implements Clock{
     //TODO
     @Override
     public String toString(){
-        return null;
+        return "";
     }
 
     @Override
@@ -96,7 +89,8 @@ class VectorClock  implements Clock{
     }
 
     public void addProcess(Integer pid, int time){
-        //Put adds a new key, value pair to the vector: vector.put(Integer key, Integer value).
+        // adds a process and its vector clock to the current clock
+        //Put adds a new (key, value) pair to the vector: vector.put(Integer key, Integer value).
         vector.put(pid, time);
     }
 }
