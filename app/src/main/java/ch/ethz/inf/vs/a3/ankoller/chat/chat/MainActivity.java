@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
             String userName = et_name.getText().toString();
             String uuid = UUID.randomUUID().toString();
 
-            //SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
             Context context = getApplicationContext();
             SharedPreferences sharedPreferences = context.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
 

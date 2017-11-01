@@ -16,6 +16,8 @@ public class MessageComparator implements Comparator<Message> {
         //use priority queue as a message buffer
         VectorClock sendclock= new VectorClock();
         VectorClock receiveclock= new VectorClock();
+        sendclock.setClockFromString(lhs.timestamp);
+        receiveclock.setClockFromString(rhs.timestamp);
 
         if(sendclock.happenedBefore(receiveclock)){
             return -1;

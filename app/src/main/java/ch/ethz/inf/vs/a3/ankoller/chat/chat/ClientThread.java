@@ -104,7 +104,7 @@ public class ClientThread implements Runnable {
         return false;
     }
 
-    private String createPacketData(String user, String uuid, String time, String type, String body){
+    public static String createPacketData(String user, String uuid, String time, String type, String body){
         return MainActivity.PACKET_DATA.replace("|#|#|USER|#|#|", user).replace("|#|#|UUID|#|#|", uuid).replace("|#|#|TIME|#|#|", time).replace("|#|#|TYPE|#|#|", type).replace("|#|#|BODY|#|#|", body);
     }
 }
