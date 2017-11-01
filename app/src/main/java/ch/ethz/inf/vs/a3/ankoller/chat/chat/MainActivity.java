@@ -48,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
         button_settings.setEnabled(true);
 
         LocalBroadcastManager.getInstance(this).registerReceiver(new LBReceiver(), new IntentFilter(BROADCAST));
-
-
     }
 
     @Override
