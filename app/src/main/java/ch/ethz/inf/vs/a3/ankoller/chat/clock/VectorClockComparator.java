@@ -2,10 +2,6 @@ package ch.ethz.inf.vs.a3.ankoller.chat.clock;
 
 import java.util.Comparator;
 
-
-//import ch.ethz.inf.vs.a3.solution.clock.VectorClock;
-
-
 public class VectorClockComparator implements Comparator<VectorClock> {
 
     @Override
@@ -26,5 +22,5 @@ public class VectorClockComparator implements Comparator<VectorClock> {
             return 0;
         }
     }
-    //todo
+    //TODO: not finished, above might be not sufficient
 }

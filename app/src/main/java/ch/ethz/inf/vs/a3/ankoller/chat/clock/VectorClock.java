@@ -4,10 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Created by anja on 25.10.2017.
- */
-
 //Added and implemented all methods and the Map which we have to use according to the exercise sheet and according to Clock.java.
 //To understand HashMap: https://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html
 

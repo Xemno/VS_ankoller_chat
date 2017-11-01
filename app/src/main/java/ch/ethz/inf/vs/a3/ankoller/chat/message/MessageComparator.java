@@ -3,7 +3,6 @@ package ch.ethz.inf.vs.a3.ankoller.chat.message;
 import java.util.Comparator;
 
 import ch.ethz.inf.vs.a3.ankoller.chat.clock.VectorClock;
-//import ch.ethz.inf.vs.a3.solution.message.Message;
 
 /**
  * Message comparator class. Use with PriorityQueue.
